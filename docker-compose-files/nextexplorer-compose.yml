@@ -1,0 +1,17 @@
+services:
+  nextexplorer:
+    image: nxzai/explorer:latest
+    container_name: nextexplorer
+    restart: unless-stopped
+    ports:
+      - "2479:3000"
+    environment:
+      - NODE_ENV=production
+      - PUBLIC_URL=https://public.url
+      - LOG_LEVEL=debug
+      - EDITOR_EXTENSIONS=toml,proto,graphql,dockerfile
+      - SKIP_CHOWN=true  # Try setting this to true if still stuck
+    volumes:
+      - ./nextexplorer-config:/config  # Persistent config storage
+      - ./nextexplorer-cache:/cache    # Persistent cache storage
+      - /Media:/mnt/Media
