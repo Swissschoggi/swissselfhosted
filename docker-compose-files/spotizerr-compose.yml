@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  spotizerr:
+    image: spotizerrphoenix/spotizerr
+    user: "1000:1000"
+    volumes:
+      - ./data:/app/data
+      - /Media/downloads/spotizerr:/app/downloads
+      - ./logs:/app/logs
+      - ./.cache:/app/.cache
+    ports:
+      - 7171:7171
+    container_name: spotizerr-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    environment:
+      - DOWNLOAD_DIR=/app/downloads  # This should match container path
+
+  redis:
+    image: redis:alpine
+    container_name: spotizerr-redis
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - redis-data:/data
+    command: sh -c 'redis-server --requirepass "$$REDIS_PASSWORD" --appendonly yes'
+
+volumes:
+  redis-data:
+    driver: local
