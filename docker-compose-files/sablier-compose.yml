@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+    sablier:
+        image: 'sablierapp/sablier:1.11.1'
+        volumes:
+            - '$PWD/sablier.yaml:/etc/sablier/sablier.yaml'
+        ports:
+            - '10000:10000'
