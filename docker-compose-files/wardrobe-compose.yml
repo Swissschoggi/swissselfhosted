@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+    wardrobe:
+        image: '3urobeat/wardrobe:latest'
+        volumes:
+            - 'wardrobe-data:/usr/src/wardrobe/data'
+        ports:
+            - '3949:3000'
