@@ -1,0 +1,26 @@
+# Docker Compose
+
+version: "3.8"
+
+services:
+  immich-swipe:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Pass environment variables at build time
+        - VITE_SERVER_URL=IMMICH_SERVER_URL
+        - VITE_USER_1_NAME=IMMICH_USERNAME_1
+        - VITE_USER_1_API_KEY=IMMICH_USER_API_KEY_1
+        - VITE_USER_2_NAME=IMMICH_USERNAME_2
+        - VITE_USER_2_API_KEY=IMMICH_USER_API_KEY_2
+        - VITE_USER_3_NAME=IMMICH_USERNAME_3
+        - VITE_USER_3_API_KEY=IMMICH_USER_API_KEY_3
+        - VITE_USER_4_NAME=IMMICH_USERNAME_4
+        - VITE_USER_4_API_KEY=IMMICH_USER_API_KEY_4
+        - VITE_USER_5_NAME=IMMICH_USERNAME_5
+        - VITE_USER_5_API_KEY=IMMICH_USER_API_KEY_5
+    container_name: immich-swipe
+    restart: unless-stopped
+    ports:
+      - "2293:80"
