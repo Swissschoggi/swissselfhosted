@@ -1,0 +1,9 @@
+version: '3.9'
+services:
+    srbhr:
+        image: 'ghcr.io/srbhr/resume-matcher:latest'
+        volumes:
+            - 'resume-data:/app/backend/data'
+        ports:
+            - '3000:3000'
+        container_name: resume-matcher
