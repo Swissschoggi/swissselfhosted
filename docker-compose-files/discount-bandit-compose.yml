@@ -1,0 +1,27 @@
+volumes:
+  discount-bandit:
+  discount-bandit-logs:
+
+networks:
+  discount-bandit:
+    driver: bridge
+
+services:
+  discount-bandit:
+    image: cybrarist/discount-bandit:v4
+    ports:
+      - 8386:80
+    networks:
+      - discount-bandit
+    volumes:
+      - ./database/database.sqlite:/app/database/sqlite
+      - ./logs:/logs
+    environment:
+      DB_CONNECTION: sqlite
+      APP_TIMEZONE: UTC
+      THEME_COLOR: Red
+      APP_URL: "http://IP:8386"
+      ASSET_URL: "http://IP:8386"
+      EXCHANGE_RATE_API_KEY: API_KEY
+      CRON: "*/5 * * * *"
+      APP_KEY: base64:SECRETKEY
