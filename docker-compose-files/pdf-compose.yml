@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  stirling-pdf:
+    image: frooodle/s-pdf:latest
+    ports:
+      - '8090:8090'
+    volumes:
+      - ./:/usr/share/tessdata #Required for extra OCR languages
+      - ./extraConfigs:/configs
+#      - ./customFiles:/customFiles/
+#      - ./logs:/logs/
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+      - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=true
+      - LANGS=de_CH
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=9090
