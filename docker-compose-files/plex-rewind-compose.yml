@@ -3,9 +3,9 @@ services:
     image: ghcr.io/raunot/plex-rewind:latest # :develop for the latest development version
     container_name: plex-rewind
     environment:
-      - NEXTAUTH_SECRET=M6BsRIAP4t6X4iBirgoV4IZLDh2s1ioppSxhLEoJwBg=
-      - NEXTAUTH_URL=https://rewind.gaechter.me/ # (required) change to your domain if you are exposing the app to the internet
-      - NEXT_PUBLIC_SITE_URL=https://rewind.gaechter.me/ # (required) change to your domain if you are exposing the app to the internet
+      - NEXTAUTH_SECRET=SECRET
+      - NEXTAUTH_URL=https://rewind.public.url/ # (required) change to your domain if you are exposing the app to the internet
+      - NEXT_PUBLIC_SITE_URL=https://rewind.public.url/ # (required) change to your domain if you are exposing the app to the internet
     volumes:
       - ./config:/app/config
     ports:
