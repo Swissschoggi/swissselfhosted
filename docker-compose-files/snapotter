@@ -1,0 +1,18 @@
+services:
+  SnapOtter:
+    image: snapotter/snapotter:latest  # or ghcr.io/snapotter-hq/snapotter:latest
+    ports:
+      - "1349:1349"
+    volumes:
+      - SnapOtter-data:/data
+    environment:
+      - AUTH_ENABLED=true
+      - DEFAULT_USERNAME=USERNAME
+      - DEFAULT_PASSWORD=PASSWORD_WILL_NEED_TO_CHANGE
+      - CORS_ORIGIN=snapotter.domain.com
+      - APP_NAME=snapotter
+      - DEFAULT_THEME=dark
+    restart: unless-stopped
+
+volumes:
+  SnapOtter-data:
